@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/AccordBox/wagtail-bootstrap-blog.svg?branch=master)](https://travis-ci.org/AccordBox/wagtail-bootstrap-blog)
 
-This project is developed exclusively for Wagtail Tutorial [Build Blog With Wagtail CMS](https://www.accordbox.com/blog/wagtail-tutorials/), which shows people how to create a Wagtail blog using Bootstrap step by step. You can also import it into your Django project to quickly add professional blog function based on Wagtail.
+This project is developed exclusively for NDMA Gambia, which shows people how to create a Wagtail blog using Bootstrap step by step. You can also import it into your Django project to quickly add professional blog function based on Wagtail.
 
 ## Project Detail
 
@@ -11,19 +11,12 @@ This project is developed exclusively for Wagtail Tutorial [Build Blog With Wagt
 * Wagtail 2
 * Bootstrap 4
 
-## Live Demo
-
-I have deployed a live Wagtail Blog Demo on Heroku, you can check it [Wagtail Blog Live Demo](http://wagtail-bootstrap-blog.accordbox.com/blog/).
-
-The admin page of this live demo is [blog admin](http://wagtail-bootstrap-blog.accordbox.com/admin/pages/4/) , you can use `admin:admin` to login and publish articles as you like.
-
-**The database and media files would be reset after a while, so do not be surprised if your article is gone.**
 
 ## Run it in local env
 
 ```bash
-git clone https://github.com/michael-yin/wagtail-bootstrap-blog.git
-cd wagtail-bootstrap-blog
+git clone https://github.com/bum2/ndma-blog.git
+cd ndma-blog
 git checkout master
 
 # setup virtualenv
@@ -34,9 +27,6 @@ pip install -r requirements.txt
 # username: admin  password: admin
 ```
 
-If you have any problem with your Wagtail project you can [contact me](https://www.accordbox.com/contact/)
+If you have any problem with your Wagtail project you can [contact me](https://sebastiafreixa.com)
 
-## ScreenShot
-
-![](https://blog.michaelyin.info/upload/images/wagtail-demo-live-screenshot-bootstrap4.original.jpg)
 
