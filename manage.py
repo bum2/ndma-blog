@@ -10,6 +10,6 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
 
     current_path = os.path.dirname(os.path.abspath(__file__))
-    sys.path.append(os.path.join(current_path, "wagtail_tuto"))
+    sys.path.append(os.path.join(current_path, "ndma_blog"))
 
     execute_from_command_line(sys.argv)
