@@ -1,1 +1,1 @@
-web: gunicorn ndma_blog.wsgi --log-file -
+web: gunicorn config.wsgi --log-file -
