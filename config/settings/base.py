@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
+
+import dj_database_url
 import django_heroku
 import environ
 import os
@@ -110,10 +112,14 @@ DATABASES = {
         'NAME': 'ndmadb',
         'USER': 'ndma',
         'PASSWORD': 'gambiaconnection',
-        'HOST': 'postgres://sukggzgrxgtual:52d84de485cbb2e5642af5f200cfead1e592a2e8b825570c03b1a9d3707e8dc5@ec2-50-17-90-177.compute-1.amazonaws.com:5432/dakq01t96ige37',
+        'HOST': 'localhost', #'postgres://sukggzgrxgtual:52d84de485cbb2e5642af5f200cfead1e592a2e8b825570c03b1a9d3707e8dc5@ec2-50-17-90-177.compute-1.amazonaws.com:5432/dakq01t96ige37',
         'PORT': '',
     }
 }
+
+db_from_env = dj_database_url.config()
+
+DATABASES['default'].update(db_from_env)
 
 
 # Internationalization
