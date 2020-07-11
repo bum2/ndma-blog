@@ -1,3 +1,3 @@
 release: python manage.py migrate
-release: psql postgresql-tapered-58818 < ndmadb.dump
+release: psql DATABASE_URL < ndmadb.dump
 web: gunicorn config.wsgi --log-file -
