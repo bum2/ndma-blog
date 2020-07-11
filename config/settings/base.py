@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import dj_database_url
+import dotenv
 import django_heroku
 import environ
 import os
@@ -18,6 +19,9 @@ import os
 BASE_DIR = environ.Path(__file__) - 3
 PROJECT_DIR = BASE_DIR.path('ndma_blog')
 
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -64,6 +68,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,20 +107,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #}
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ndmadb',
-        'USER': 'ndma',
-        'PASSWORD': 'gambiaconnection',
-        'HOST': 'localhost', #'postgres://sukggzgrxgtual:52d84de485cbb2e5642af5f200cfead1e592a2e8b825570c03b1a9d3707e8dc5@ec2-50-17-90-177.compute-1.amazonaws.com:5432/dakq01t96ige37',
-        'PORT': '',
-    }
-}
+
+
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 db_from_env = dj_database_url.config()
 
@@ -155,6 +150,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
@@ -175,3 +171,4 @@ BASE_URL = 'http://example.com'
 
 
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
